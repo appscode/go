@@ -7,7 +7,7 @@ require (
 	github.com/cenkalti/backoff v2.1.1+incompatible
 	github.com/codeskyblue/go-sh v0.0.0-20190412065543-76bd3d59ff27
 	github.com/fatih/color v1.7.0
-	github.com/flosch/pongo2 v0.0.0-20181225140029-79872a7b2769
+	github.com/flosch/pongo2 v0.0.0-20190707114632-bbf5a6c351f4
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.2.0
