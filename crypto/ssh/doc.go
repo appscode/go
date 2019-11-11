@@ -6,9 +6,11 @@ Package ssh provides a GOlang library for copying files and running commands ove
 package main
 
 import (
-	"github.com/appscode/go/crypto/ssh"
 	"log"
 	"os"
+
+	"github.com/appscode/go/crypto/ssh"
+
 )
 
 func main() {

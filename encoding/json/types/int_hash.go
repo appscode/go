@@ -17,8 +17,8 @@ IntHash represents as int64 Generation and string Hash. It is json serialized in
 */
 // +k8s:openapi-gen=true
 type IntHash struct {
-	generation int64
-	hash       string
+	Generation int64  `protobuf:"varint,1,opt,name=generation"`
+	Hash       string `protobuf:"bytes,2,opt,name=hash"`
 }
 
 func ParseIntHash(v interface{}) (*IntHash, error) {
@@ -26,11 +26,11 @@ func ParseIntHash(v interface{}) (*IntHash, error) {
 	case nil:
 		return &IntHash{}, nil
 	case int:
-		return &IntHash{generation: int64(m)}, nil
+		return &IntHash{Generation: int64(m)}, nil
 	case int64:
-		return &IntHash{generation: m}, nil
+		return &IntHash{Generation: m}, nil
 	case *int64:
-		return &IntHash{generation: types.Int64(m)}, nil
+		return &IntHash{Generation: types.Int64(m)}, nil
 	case IntHash:
 		return &m, nil
 	case *IntHash:
@@ -52,39 +52,31 @@ func parseStringIntoIntHash(s string) (*IntHash, error) {
 	idx := strings.IndexRune(s, '$')
 	switch {
 	case idx <= 0:
-		return nil, errors.New("missing generation")
+		return nil, errors.New("missing Generation")
 	case idx == len(s)-1:
-		return nil, errors.New("missing hash")
+		return nil, errors.New("missing Hash")
 	default:
 		i, err := strconv.ParseInt(s[:idx], 10, 64)
 		if err != nil {
 			return nil, err
 		}
 		h := s[idx+1:]
-		return &IntHash{generation: i, hash: h}, nil
+		return &IntHash{Generation: i, Hash: h}, nil
 	}
 }
 
-func NewIntHash(i int64, h string) *IntHash { return &IntHash{generation: i, hash: h} }
+func NewIntHash(i int64, h string) *IntHash { return &IntHash{Generation: i, Hash: h} }
 
-func IntHashForGeneration(i int64) *IntHash { return &IntHash{generation: i} }
+func IntHashForGeneration(i int64) *IntHash { return &IntHash{Generation: i} }
 
-func IntHashForHash(h string) *IntHash { return &IntHash{hash: h} }
-
-func (m IntHash) Generation() int64 {
-	return m.generation
-}
-
-func (m IntHash) Hash() string {
-	return m.hash
-}
+func IntHashForHash(h string) *IntHash { return &IntHash{Hash: h} }
 
 // IsZero returns true if the value is nil or time is zero.
 func (m *IntHash) IsZero() bool {
 	if m == nil {
 		return true
 	}
-	return m.generation == 0 && m.hash == ""
+	return m.Generation == 0 && m.Hash == ""
 }
 
 func (m *IntHash) Equal(u *IntHash) bool {
@@ -97,8 +89,8 @@ func (m *IntHash) Equal(u *IntHash) bool {
 	if m == u {
 		return true
 	}
-	if m.generation == u.generation {
-		return m.hash == u.hash
+	if m.Generation == u.Generation {
+		return m.Hash == u.Hash
 	}
 	return false
 }
@@ -113,7 +105,7 @@ func (m *IntHash) MatchGeneration(u *IntHash) bool {
 	if m == u {
 		return true
 	}
-	return m.generation == u.generation
+	return m.Generation == u.Generation
 }
 
 func (m *IntHash) DeepCopyInto(out *IntHash) {
@@ -130,15 +122,15 @@ func (m *IntHash) DeepCopy() *IntHash {
 }
 
 func (m IntHash) String() string {
-	return fmt.Sprintf(`%d$%s`, m.generation, m.hash)
+	return fmt.Sprintf(`%d$%s`, m.Generation, m.Hash)
 }
 
 func (m *IntHash) MarshalJSON() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	if m.hash == "" {
-		return json.Marshal(m.generation)
+	if m.Hash == "" {
+		return json.Marshal(m.Generation)
 	}
 	return json.Marshal(m.String())
 }
@@ -169,7 +161,7 @@ func (m *IntHash) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	m.generation = i
+	m.Generation = i
 	return nil
 }
 

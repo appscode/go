@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	. "github.com/appscode/go/strings"
+
 	"github.com/stretchr/testify/assert"
 )
 

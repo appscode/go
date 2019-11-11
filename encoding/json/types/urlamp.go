@@ -12,9 +12,9 @@ import (
 )
 
 type URLMap struct {
-	Scheme string
-	Hosts  map[string]string
-	Port   int
+	Scheme string            `protobuf:"bytes,1,opt,name=scheme"`
+	Hosts  map[string]string `protobuf:"bytes,2,rep,name=hosts"`
+	Port   int               `protobuf:"varint,3,opt,name=port"`
 }
 
 func NewURLMap(scheme string, port int) *URLMap {

@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	. "github.com/appscode/go/encoding/json/types"
+
 	"github.com/stretchr/testify/assert"
 )
 

@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	. "github.com/appscode/go/encoding/json"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -65,7 +66,7 @@ func TestFilter(t *testing.T) {
 		obj    string
 		filter string
 		result string
-		rErr error
+		rErr   error
 	}{
 		{
 			name: `non-nested filter`,
@@ -167,8 +168,8 @@ func TestFilter(t *testing.T) {
 `,
 		},
 		{
-			name:   `should fail to filter non-nested key`,
-			obj:    obj,
+			name: `should fail to filter non-nested key`,
+			obj:  obj,
 			filter: `
 {
   "apiVersion": null,
@@ -183,8 +184,8 @@ func TestFilter(t *testing.T) {
 			rErr: errors.New(`can't apply filter {"app2":null} on metadata.name: busy-dm`),
 		},
 		{
-			name:   `should fail to filter non-nested array element`,
-			obj:    obj,
+			name: `should fail to filter non-nested array element`,
+			obj:  obj,
 			filter: `
 {
   "apiVersion": null,

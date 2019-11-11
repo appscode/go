@@ -1,6 +1,7 @@
 package types
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"net/url"
@@ -8,15 +9,13 @@ import (
 	"strconv"
 	"strings"
 
-	"bytes"
-
 	"github.com/appscode/go/sets"
 )
 
 type URLSet struct {
-	Scheme string
-	Hosts  sets.String
-	Port   int
+	Scheme string      `protobuf:"bytes,1,opt,name=scheme"`
+	Hosts  sets.String `protobuf:"bytes,2,rep,name=hosts,casttype=github.com/appscode/go/sets.String"`
+	Port   int         `protobuf:"varint,3,opt,name=port"`
 }
 
 func NewURLSet(scheme string, port int) *URLSet {

@@ -1,14 +1,13 @@
 package types
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"net/url"
 	"sort"
 	"strconv"
 	"strings"
-
-	"bytes"
 
 	"github.com/appscode/go/sets"
 )
