@@ -91,13 +91,13 @@ func CopyDir(dst, src string) (err error) {
 		return fmt.Errorf("source is not a directory")
 	}
 
-	_, err = os.Stat(dst)
-	if err != nil && !os.IsNotExist(err) {
-		return
-	}
-	if err == nil {
-		return fmt.Errorf("destination already exists")
-	}
+	//_, err = os.Stat(dst)
+	//if err != nil && !os.IsNotExist(err) {
+	//	return
+	//}
+	//if err == nil {
+	//	return fmt.Errorf("destination already exists")
+	//}
 
 	err = os.MkdirAll(dst, si.Mode())
 	if err != nil {
