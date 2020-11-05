@@ -2,6 +2,8 @@
 [![Go Report Card](https://goreportcard.com/badge/appscode/go "Go Report Card")](https://goreportcard.com/report/appscode/go)
 [![GoDoc](https://godoc.org/github.com/appscode/go?status.svg "GoDoc")](https://godoc.org/github.com/appscode/go)
 
+> This repo has been moved to https://github.com/gomodules/x . This is left here so existing builds don't break. Dependencies should switch over to the new Go module.
+
 # go
 Ensemble of GOlang libraries used by AppsCode
 
